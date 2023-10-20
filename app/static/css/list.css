@@ -1,0 +1,73 @@
+
+.download_list {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.download_list li {
+  height: 35px;
+  border-bottom: 1px solid var(--main-border-color);
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.download_list li:first-of-type {
+  position: fixed;
+  top: 0px;
+  background-color: var(--top-color);
+  z-index: 2;
+}
+
+.download_list li > p {
+  width: calc(100% / 8);
+  margin: 6px 12px;
+  display: inline-block;
+  padding: 0;
+  /* text-align: center; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.download_list li > p:first-of-type {
+  margin-left: 50px;
+  text-align: left;
+}
+
+.download_list li > p:last-of-type {
+  margin-right: 50px;
+  text-align: left;
+}
+
+.download_list li > .download_ico {
+  position: absolute;
+  margin: 5px;
+  left: 12px;
+  width: 21px;
+}
+
+.download_list li > .delete_ico {
+  position: absolute;
+  margin: 5px;
+  right: 12px;
+  width: 21px;
+}
+
+.download_list li > .add_ico {
+  position: absolute;
+  margin: 8px 5px;
+  right: 12px;
+  width: 21px;
+}
+
+.download_list li > img {
+  cursor: pointer;
+  transition: .08s all;
+}
+
+.download_list li > img:hover {
+  cursor: pointer;
+  filter: var(--main-icons-filter-hover);
+}

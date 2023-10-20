@@ -1,0 +1,412 @@
+:root {
+  --scalex: calc(100% - 1280px);
+  --scaley: calc(100% - 720px);
+
+  --width-left-bar: 200px;
+  --width-right-bar: 300px;
+
+  --top-font-color: #D1D5DA;
+  --main-font-color: #D1D5DA;
+
+  --bg-color: #24292E;
+  --top-color: #1D2125;
+  --right-color: #1D2125;
+  --left-color: #24292E;
+
+  --top-hover-color: #2F363D;
+  --hover-color: #2F363D;
+
+  --top-red_color: #450C0F;
+  --main-red-color:  #450C0F;
+  --hover-red-color:  #6E262B;
+
+  --top-input-color: #2F363D;
+  --main-input-color: #2F363D;
+
+  --top-icons-filter: invert(65%);
+  --main-icons-filter: invert(65%);
+  --main-icons-filter-hover: invert(85%);
+
+  --top-border-color: #141414;
+  --main-border-color: #141414;
+
+  --main-hover-border-color: #AAAAAA;
+
+  --top-checkBox-color: #999999;
+  --main-checkBox-color: #999999;
+
+  --scroll-color: #4F5357;
+  --scroll-bg-color: #1D2125;
+
+  --selected-file-color: #2A3137;
+
+  --preview-bg: #000;
+
+  --fileList-checkbox-color: #1D2125;
+  --fileList-checkbox-delimiter-color: #2F363D;
+  --fileList-delimiter-color: #171A1D;
+
+  --terminal-list-bg: #22272C;
+
+  --color-hide-font: #959DA5;
+
+}
+
+[data-theme = "light"] {
+  --scalex: calc(100% - 1280px);
+
+  --width-left-bar: 200px;
+
+  --top-font-color: #D1D5DA;
+  --main-font-color: #24292E;
+
+  --bg-color: #FFFFFF;
+  --top-color: #1D2125;
+  --right-color: #FFFFFF;
+  --left-color: #FFFFFF;
+
+  --top-hover-color: #2F363D;
+  --hover-color: #EBEEF1;
+
+  --top-red_color: #450C0F;
+  --main-red-color:  #FDB8C0;
+  --hover-red-color:  #D6A5A5;
+
+  --top-input-color: #FFFFFF;
+  --main-input-color: #FFFFFF;
+
+  --top-icons-filter: invert(70%);
+  --main-icons-filter: invert(35%);
+  --main-icons-filter-hover: invert(15%);
+
+  --top-border-color: #141414;
+  --main-border-color: #E1E4E8;
+
+  --top-checkBox-color: #999999;
+  --main-checkBox-color: #595959;
+
+  --scroll-color: #CCCCCC;
+  --scroll-bg-color: #fff;
+
+  --selected-file-color: #E4E7EB;
+
+  --preview-bg: #fff;
+
+  --fileList-checkbox-color: #FFFFFF;
+  --fileList-checkbox-delimiter-color: #E1E4E8;
+  --fileList-delimiter-color: #FFFFFF;
+
+  --color-hide-font: #6A737D;
+
+}
+
+p {
+  color: var(--main-font-color); /* Цвет текста */
+}
+
+h1, h2, h3, h4, h5, h6, th, td {
+  /*color: #C1C2BF; /* Цвет текста */
+  color: var(--main-font-color);
+}
+
+a {
+  color: var(--main-font-color); /* Цвет ссылок */
+}
+
+.top_bar_font_color {
+  color: var(--top-font-color);
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+input {outline:none;}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--main-font-color);
+}
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: var(--bg-color);
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  filter: var(--main-icons-filter);
+}
+
+.icon_topBar {
+  filter: var(--top-icons-filter);
+}
+
+.block_select {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+.allow_select {
+  -moz-user-select: text;
+  -khtml-user-select: text;
+  user-select: text;
+}
+
+.scroll_style::-webkit-scrollbar {
+  /* ширина */
+  width: 5px;
+  height: 5px;
+}
+
+.scroll_style::-webkit-scrollbar-track {
+  /* фон */
+  background: var(--scroll-bg-color);
+}
+
+.scroll_style::-webkit-scrollbar-thumb {
+  /* цвет ползунка */
+  background-color: var(--scroll-color);
+  border-radius: 2px;
+}
+
+.hr_style{
+  border: none;
+  background-color:  var(--main-border-color);
+  color: var(--main-border-color);
+  height: 1px;
+}
+
+.vl_style {
+  border-left: 2px solid #000;
+  filter: var(--top-icons-filter);
+}
+
+.input_style {
+  position: relative;
+  color: var(--main-font-color);
+  border: 1px solid var(--main-border-color);
+  background-color: var(--bg-color);
+  font-size: 14px;
+  padding: 12px 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  height: 30px;
+
+}
+
+.input_style:active, .input_style:hover, .input_style:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.background_black {
+  position: fixed;
+  left: 0px;
+  top: 45px;
+  width: 100%;
+  height: 100%;
+
+  background-color: #000;
+  opacity: .5;
+}
+
+@media screen and (min-width: 768px) {
+  .button_margin p {
+    margin: -28px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button_margin p {
+    margin: -27px 40px;
+  }
+}
+.button_margin img {
+  margin: 7px 10px;
+}
+
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.div_ver {
+
+}
+
+.div_ver a {
+  text-decoration: none;
+  color: var(--main-font-color);
+}
+
+.div_ver a:hover {
+  text-decoration: underline;
+}
+
+.div_ver p {
+  opacity: .9;
+}
+
+/*----------------------------------------------------------------------------*/
+
+.svg_red {
+  filter: invert(29%) sepia(91%) saturate(1754%) hue-rotate(333deg) brightness(85%) contrast(95%);
+}
+
+.svg_green {
+  filter: invert(55%) sepia(16%) saturate(2129%) hue-rotate(81deg) brightness(92%) contrast(81%);
+}
+
+.svg_orage {
+  filter: invert(76%) sepia(21%) saturate(5599%) hue-rotate(6deg) brightness(96%) contrast(93%);
+}
+
+.svg_white {
+  filter: invert(95%) sepia(7%) saturate(163%) hue-rotate(175deg) brightness(94%) contrast(83%);
+}
+
+/*----------------------------------------------------------------------------*/
+
+.disk_space_red {
+  filter: invert(28%) sepia(19%) saturate(5003%) hue-rotate(331deg) brightness(93%) contrast(93%);
+}
+
+.disk_space_orange {
+  filter: invert(68%) sepia(74%) saturate(342%) hue-rotate(349deg) brightness(89%) contrast(93%);
+}
+
+/*----------------------------------------------------------------------------*/
+
+.round_button {
+  height: 35px;
+
+  border-radius: 8px;
+  border: 1px solid var(--main-border-color);
+  background-color: var(--hover-color);
+
+  cursor: pointer;
+}
+
+.round_button p {
+  white-space: nowrap;
+}
+
+.round_button:hover {
+  border: 1px solid var(--main-hover-border-color);
+}
+
+.top_round_button {
+  height: 35px;
+
+  border-radius: 8px;
+  border: 1px solid var(--top-border-color);
+  background-color: var(--top-hover-color);
+
+  cursor: pointer;
+}
+
+.top_round_button:hover {
+  border: 1px solid var(--main-hover-border-color);
+}
+
+/*----------------------------------------------------------------------------*/
+
+.round_selector {
+  position: relative;
+  font-size: 14px;
+  margin: 8px 0;
+  height: 30px;
+  border: none;
+  background-color: var(--hover-color);
+  color: var(--main-font-color);
+  border: 1px solid var(--main-border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  clip-path: None;
+}
+
+.round_selector:focus {
+  outline: none;
+}
+
+.round_selector:hover {
+  /* background-color: var(--hover-color); */
+}
+
+/*----------------------------------------------------------------------------*/
+
+.input_text {
+  position: absolute;
+  color: var(--main-font-color);
+  border: 1px solid var(--main-border-color);
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  height: 30px;
+  background-color: var(--hover-color)
+}
+
+.input_text p {
+  margin: 3px 10px;
+}
+
+.input_text input {
+  margin-top: -10px;
+  right: 1px;
+  border: none
+}
+
+/*----------------------------------------------------------------------------*/
+
+.folder_filter {
+  filter: invert(66%) sepia(17%) saturate(883%) hue-rotate(357deg) brightness(95%) contrast(96%);
+}
+
+.media_filter {
+  filter: invert(64%) sepia(8%) saturate(6627%) hue-rotate(213deg) brightness(104%) contrast(88%);
+}
+
+.archive_filter {
+  filter: invert(69%) sepia(16%) saturate(5260%) hue-rotate(308deg) brightness(98%) contrast(99%);
+}
+
+.text_filter {
+  filter: invert(60%) sepia(93%) saturate(445%) hue-rotate(184deg) brightness(101%) contrast(101%);
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* rotate animation */
+.anim_rotate {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform:rotate(360deg);
+  }
+}
