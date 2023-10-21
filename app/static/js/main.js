@@ -55,10 +55,10 @@ var state_str = [
 
 var state_color = [
   '#FFF',
-  '#FFF',
+  '#FFFF00',
   '#FFF',
   '#0000FF',
-  '#0000FF',
+  '#00FF00',
   '#FFF',
   '#FFF',
   '#FFF'
