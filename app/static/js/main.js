@@ -53,6 +53,17 @@ var state_str = [
     'checking fastresume'
 ]
 
+var state_color = [
+  '#FFF',
+  '#FFF',
+  '#FFF',
+  '#0000FF',
+  '#0000FF',
+  '#FFF',
+  '#FFF',
+  '#FFF'
+]
+
 function get_info() {
   fetch(`/get_info`, {
     method: 'GET',
@@ -69,7 +80,6 @@ function get_info() {
       <p>STATE</p>
       <p>STATUS</p>
       <p>SPEED</p>
-      <p></p>
       <label for="fileElem" class="delete_ico">
         <img src="static/img/add.svg" class="add_ico icon">
       </label>
@@ -77,7 +87,7 @@ function get_info() {
     let i = 0;
     for (const item of data.data) {
       append_to_ul("download_list", `
-        <img src="static/img/download.svg" class="download_ico icon">
+        <div class="status_ico" style="background-color: ${state_color[item.state]};"></div>
         <p class="name">${item.name}</p>
         <p class="size">${convert_size(item.total_size)}</p>
         <p class="state">${item.progress} %</p>

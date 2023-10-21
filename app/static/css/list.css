@@ -41,11 +41,18 @@
   text-align: left;
 }
 
-.download_list li > .download_ico {
+.download_list li > .status_ico {
   position: absolute;
-  margin: 5px;
-  left: 12px;
-  width: 21px;
+  margin: 3px;
+  left: 8px;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  /* background-color: #00FF00; */
+  /* background-color: #FF0000; */
+  /* background-color: #0000FF; */
+  /* background-color: #FFF; */
+  opacity: .8;
 }
 
 .download_list li > .delete_ico {
@@ -80,4 +87,14 @@
 .download_list li > label > img:hover {
   cursor: pointer;
   filter: var(--main-icons-filter-hover);
+}
+
+@media screen and (max-width: 540px) {
+  .download_list li > p {
+    width: calc(100% / 7.5);
+  }
+
+  .download_list li > p:last-of-type {
+    display: none;
+  }
 }
