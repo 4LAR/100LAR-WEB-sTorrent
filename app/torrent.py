@@ -39,14 +39,17 @@ class Torrent_Controller:
 
     def get_all(self):
         result = []
-        for item in self.torrents:
-            result.append(item.get_status())
+        for i, item in enumerate(self.torrents):
+            result.append({
+                "id": i,
+                **item.get_status()
+            })
 
         return result
 
 class Download:
     def __init__(self, file):
-        print("Add torrent: %s" % (file))
+        self.file_name = file
         self.info = lt.torrent_info(file)
         self.h = ses.add_torrent({'ti': self.info, 'save_path': config.get("Torrent")['save_path']})
 
@@ -63,6 +66,7 @@ class Download:
         if not self.h.is_seed():
             s = self.h.status()
             return {
+                "name": self.h.name(),
                 "progress": s.progress * 100,
                 "download": s.download_rate,
                 "up": s.upload_rate,
