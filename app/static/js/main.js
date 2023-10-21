@@ -15,6 +15,11 @@ function clear_ul(id) {
   document.getElementById(id).innerHTML = '';
 }
 
+// вычисление логарифма
+function getBaseLog(x, y) {
+  return Math.log(y) / Math.log(x);
+}
+
 var size_name = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
 // конвертирование байтов в [size_name]
@@ -48,11 +53,15 @@ var state_str = [
     'checking fastresume'
 ]
 
-async function get_info() {
-  let response = await fetch(`/get_info`, {
-    method: 'GET'
-  });
-  if (!response.ok) {
+function get_info() {
+  fetch(`/get_info`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
     clear_ul("download_list");
     append_to_ul("download_list", `
       <p>NAME</p>
@@ -61,30 +70,52 @@ async function get_info() {
       <p>STATUS</p>
       <p>SPEED</p>
       <p></p>
-      <img src="static/img/add.svg" class="add_ico icon">
+      <label for="fileElem" class="delete_ico">
+        <img src="static/img/add.svg" class="add_ico icon">
+      </label>
     `);
-    for (const item of response.json.data) {
+    let i = 0;
+    for (const item of data.data) {
       append_to_ul("download_list", `
         <img src="static/img/download.svg" class="download_ico icon">
         <p class="name">${item.name}</p>
-        <p class="size">${convert_size(item.)}</p>
-        <p class="state">${}</p>
-        <p class="status">${}</p>
-        <p class="speed_in">${}</p>
-        <img src="static/img/trash.svg" class="delete_ico icon">
+        <p class="size">${convert_size(item.total_size)}</p>
+        <p class="state">${item.progress} %</p>
+        <p class="status">${state_str[item.state]}</p>
+        <p class="speed_in">${(item.download)? (convert_size(item.download) + "/s"): ""}</p>
+        <img src="static/img/trash.svg" class="delete_ico icon" onclick="delete_item(${i})">
       `);
+      i++;
     }
-  }
+  })
 }
 
-function delete_item(id) {
+setInterval(() => get_info(), 1000);
 
+function delete_item(id) {
+  fetch(`/remove_torrent?id=${id}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    clear_ul("download_list");
+  })
 }
 
 function download_item() {
 
 }
 
-function add_item() {
-
+function add_item(file) {
+  form = new FormData();
+  var xhr = new XMLHttpRequest();
+  form.append("file", file[0]);
+  xhr.open('post', `/add_torrent`, true);
+  xhr.upload.onload = function() {
+    clear_ul("download_list");
+  }
+  xhr.send(form);
 }

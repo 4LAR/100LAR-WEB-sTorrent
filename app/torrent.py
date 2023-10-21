@@ -65,10 +65,11 @@ class Download:
             s = self.h.status()
             return {
                 "name": self.h.name(),
-                "progress": s.progress * 100,
+                "progress": round(s.progress * 100, 1),
                 "download": s.download_rate,
                 "up": s.upload_rate,
-                "state": s.state
+                "state": s.state,
+                "total_size": s.total_wanted
             }
 
         else:

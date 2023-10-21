@@ -71,3 +71,13 @@
   cursor: pointer;
   filter: var(--main-icons-filter-hover);
 }
+
+.download_list li > label > img {
+  cursor: pointer;
+  transition: .08s all;
+}
+
+.download_list li > label > img:hover {
+  cursor: pointer;
+  filter: var(--main-icons-filter-hover);
+}
