@@ -2,7 +2,7 @@ import libtorrent as lt
 import time
 import sys
 import os
-import threading
+import shutil
 
 from globals import *
 from config import config
@@ -28,14 +28,21 @@ class Torrent_Controller:
         for file in [file_name for file_name in os.listdir(config.get("Torrent")['cached_files_path']) if file_name.split(".")[-1] == "torrent"]:
             self.torrents.append(Download(config.get("Torrent")['cached_files_path'] + "/" + file))
 
-    def add(file):
-        ...
+    def add(self, file):
+        torrent_file = config.get("Torrent")['cached_files_path'] + "/" + file
+        for el in self.torrents:
+            if torrent_file == el.file_name:
+                return
+
+        self.torrents.append(Download(torrent_file))
 
     def remove(self, id):
-        ...
+        os.remove(self.torrents[id].file_name)
+        # shutil.rmtree(self.torrents[id].h.name())
+        self.torrents.pop(id)
 
     def get(self, id):
-        ...
+        return self.torrents[id].get_status()
 
     def get_all(self):
         result = []
@@ -52,15 +59,6 @@ class Download:
         self.file_name = file
         self.info = lt.torrent_info(file)
         self.h = ses.add_torrent({'ti': self.info, 'save_path': config.get("Torrent")['save_path']})
-
-        # self.download_thread = threading.Thread(target=self.thread_func)
-        # self.download_thread.start()
-        # self.s = None
-
-    # def thread_func(self):
-    #     while (not self.h.is_seed()):
-    #         self.s = self.h.status()
-    #         time.sleep(1)
 
     def get_status(self):
         if not self.h.is_seed():
