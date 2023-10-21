@@ -17,7 +17,8 @@ class Config:
             },
             "Torrent": {
                 "save_path": "./",
-                "cached_files_path": "./"
+                "cached_files_path": "./",
+                "outgoing_interfaces": ""
             }
         }
 

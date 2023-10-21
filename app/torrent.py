@@ -7,7 +7,14 @@ import shutil
 from globals import *
 from config import config
 
-ses = lt.session()
+if len(config.get("Torrent")['outgoing_interfaces']) > 0:
+    ses = lt.session({
+        'outgoing_interfaces': config.get("Torrent")['outgoing_interfaces']
+    })
+
+else:
+    ses = lt.session()
+    
 ses.listen_on(6881, 6891)
 
 state_str = [
