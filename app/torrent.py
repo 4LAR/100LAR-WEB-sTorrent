@@ -14,8 +14,13 @@ if len(config.get("Torrent")['outgoing_interfaces']) > 0:
 
 else:
     ses = lt.session()
-    
+
 ses.listen_on(6881, 6891)
+ses.set_max_connections(200
+
+settings = lt.session_settings()
+settings.upload_rate_limit = 50000  # Настройте скорость отдачи (в байтах в секунду)
+ses.set_settings(settings)
 
 state_str = [
     'queued',
